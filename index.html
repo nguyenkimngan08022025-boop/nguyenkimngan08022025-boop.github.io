@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Introduction</title>
+    
+    <!-- 
+      PHẦN 2: CSS (Tất cả style nằm ở đây)
+      Đây là "lớp da và quần áo" cho trang web.
+    -->
+    <style>
+        /* Import một phông chữ đẹp */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+        /* Thiết lập cơ bản cho toàn bộ trang */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f4f4f5; /* Màu nền xám nhạt */
+            color: #333;
+            
+            /* Các dòng này để căn thẻ vào giữa màn hình */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        /* Thẻ trắng chính */
+        .card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ */
+            padding: 2rem;
+            max-width: 400px;
+            width: 100%; 
+            text-align: center;
+        }
+
+        /* Ảnh đại diện hình tròn */
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%; /* Đây là mẹo để làm cho nó tròn */
+            object-fit: cover;
+            border: 4px solid #eee;
+        }
+
+        /* Tên của bạn */
+        h1 {
+            font-size: 1.75rem;
+            color: #111;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Dòng mô tả ngắn */
+        .tagline {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Nút liên hệ */
+        .contact-btn {
+            display: block;
+            width: 100%;
+            padding: 0.85rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            background-color: #1e88e5; /* Màu xanh dương */
+            color: white;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            cursor: pointer; /* Biến thành hình bàn tay khi di chuột */
+            transition: background-color 0.2s ease;
+            box-sizing: border-box; /* Ngăn padding làm hỏng layout */
+        }
+
+        .contact-btn:hover {
+            background-color: #1565c0; /* Màu xanh đậm hơn khi di chuột */
+        }
+        
+        /* Văn bản email (ban đầu bị ẩn) */
+        .email-text {
+            margin-top: 1rem;
+            background: #f0f0f0;
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        /* Một lớp CSS để ẩn/hiện */
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 
+      PHẦN 1: HTML (Nội dung và cấu trúc)
+      Đây là "bộ xương" của trang web.
+    -->
+    <main class="card">
+        
+        <!-- Thay link ảnh này bằng link ảnh của bạn sau! -->
+        <img src="https://placehold.co/120x120/1e88e5/ffffff?text=Me" alt="My profile picture" class="profile-pic">
+
+        <!-- THAY ĐỔI NHỮNG DÒNG NÀY -->
+        <h1>Your Name Here</h1>
+        <p class="tagline">Developer in training & Student</p>
+        <!-- KẾT THÚC PHẦN THAY ĐỔI -->
+        
+        <p>Hello! I'm learning web design and this is my first website
+            hosted on GitHub Pages.
+        </p>
+
+        <br> <!-- Thêm một chút khoảng trống -->
+
+        <!-- Nút tương tác -->
+        <button id="email-btn" class="contact-btn">Show My Email</button>
+        
+        <!-- THAY EMAIL NÀY -->
+        <p id="email-text" class="email-text hidden">your.email@example.com</p>
+
+    </main>
+
+    <!-- 
+      PHẦN 3: JAVASCRIPT (Tương tác)
+      Đây là "bộ não" làm cho trang web có thể nhấp được.
+    -->
+    <script>
+        // Tìm cái nút và dòng chữ email
+        const emailBtn = document.getElementById('email-btn');
+        const emailText = document.getElementById('email-text');
+
+        // Thêm một trình nghe sự kiện "click" (nhấp chuột) vào nút
+        emailBtn.addEventListener('click', () => {
+            
+            // Chuyển đổi (toggle) lớp 'hidden' trên văn bản email
+            // Nếu nó đang bị ẩn, nó sẽ hiện ra
+            // Nếu nó đang hiện ra, nó sẽ bị ẩn đi
+            emailText.classList.toggle('hidden');
+
+            // Thay đổi văn bản của nút
+            if (emailText.classList.contains('hidden')) {
+                emailBtn.textContent = 'Show My Email';
+            } else {
+                emailBtn.textContent = 'Hide My Email';
+            }
+        });
+    </script>
+
+</body>
+</html>
